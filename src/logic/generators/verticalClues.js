@@ -49,12 +49,18 @@ export function generateTripleSameColumnClue(solution) {
 
 export function generateEitherColumnClue(solution) {
   const keys = Object.keys(solution);
-  const col1 = Math.floor(Math.random() * 5);
-  const col2 = Math.floor(Math.random() * 5);
+  let col1 = Math.floor(Math.random() * 5);
+  let col2;
+  
+  // Osiguraj različite kolone
+  do {
+    col2 = Math.floor(Math.random() * 5);
+  } while (col1 === col2);
+
   const [cat1, cat2, cat3] = getThreeDifferent(keys);
-  const item = getValue(solution,cat1,col1);
-  const choice1 = getValue(solution,cat2,col1);
-  const choice2 = getValue(solution,cat3,col2);
+  const item = getValue(solution, cat1, col1);
+  const choice1 = getValue(solution, cat2, col1);
+  const choice2 = getValue(solution, cat3, col2);
 
   return {
     type: 'eitherColumn',
