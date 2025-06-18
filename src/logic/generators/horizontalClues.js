@@ -67,9 +67,10 @@ export function generateNotBetweenClue(solution) {
 export function generateLeftOfClue(solution) {
   const categories = Object.keys(solution);
   const category = categories[Math.floor(Math.random() * categories.length)];
-  const col = Math.floor(Math.random() * 4); // позиције 0–3
-  const left = getValue(solution,category,col - 1);
-  const right = getValue(solution,category,col + 1);
+  const col = Math.floor(Math.random() * 3) + 1; // 1-3 (izbegavamo rubove)
+  const left = getValue(solution, category, col - 1);
+  const right = getValue(solution, category, col + 1);
+  
   return {
     type: 'leftOf',
     text: `${left} је лево од ${right}`,
