@@ -94,6 +94,8 @@ function getTwoDifferent(arr) {
 }
 
 function getThreeDifferent(arr) {
-  const shuffled = arr.sort(() => 0.5 - Math.random());
+  if (arr.length < 3) throw new Error("Nedovoljno kategorija");
+  
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, 3);
 }
